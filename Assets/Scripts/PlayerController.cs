@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         rb2D.velocity = new Vector2(moveSpeed * Input.GetAxisRaw("Horizontal"), rb2D.velocity.y);
 
-        isGrounded = Physics2D.OverlapCircle(GroundCheckpoint.position, .2f, groundMask);
+        isGrounded = Physics2D.OverlapCircle(GroundCheckpoint.position, .05f, groundMask);
 
         if (isGrounded)
         {
