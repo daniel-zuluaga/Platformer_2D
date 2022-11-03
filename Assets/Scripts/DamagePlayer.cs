@@ -20,7 +20,7 @@ public class DamagePlayer : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            PlayerHealthController.instance.DealDamage(); 
+            PlayerHealthController.instance.DealDamage();
         }
     }
 }
