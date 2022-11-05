@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     public float minHeight, maxHeight; 
 
     private Vector2 lastPos;
+    public float separation;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+        transform.position = new Vector3(target.position.x + separation, target.position.y, transform.position.z);
 
         Vector2 amountToMove = new Vector2(transform.position.x - lastPos.x, transform.position.y - lastPos.y); ;
 
