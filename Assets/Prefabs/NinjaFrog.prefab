@@ -111,6 +111,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+  KnockBackLength: 0.5
+  KnockBackForce: 1
 --- !u!95 &7101525349724002660
 Animator:
   serializedVersion: 3
@@ -180,7 +182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 10
+  maxHealth: 8
+  invincibleLength: 2
+  sprite: {fileID: 7101525349724002663}
 --- !u!1 &7101525350907131601
 GameObject:
   m_ObjectHideFlags: 0

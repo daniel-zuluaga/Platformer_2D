@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthController : MonoBehaviour
 {
@@ -8,13 +9,16 @@ public class PlayerHealthController : MonoBehaviour
 
     public int currentHealth, maxHealth;
 
+    public float invincibleLength;
+    private float invincibleCounter;
+    public SpriteRenderer sprite;
+
     private void Awake()
     {
         instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         currentHealth = maxHealth;
     }
@@ -22,17 +26,38 @@ public class PlayerHealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(invincibleCounter > 0)
+        {
+            invincibleCounter -= Time.deltaTime;
+            if(invincibleCounter <= 0)
+            {
+                sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1f);
+            }
+        }
     }
 
     public void DealDamage()
     {
-        currentHealth--;
-
-        if(currentHealth <= 0)
+        if(invincibleCounter <= 0)
         {
-            gameObject.SetActive(false);
+            currentHealth--;
+            PlayerController.instance.anim.SetTrigger("Hurt");
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                gameObject.SetActive(false);
+                SceneManager.LoadScene("Level2");
+            }
         }
+        else
+        {
+            invincibleCounter = invincibleLength;
+
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0.5f);
+        }
+
+        PlayerController.instance.KnockBack();
 
         UIController.instance.UpdateHealthDisplay();
     }
