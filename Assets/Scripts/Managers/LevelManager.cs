@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
 
     public float waitToRespawn = 3f;
 
+    public int CountGems, CountFruits;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,7 +25,7 @@ public class LevelManager : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        StartCoroutine(RespawnCoroutine());
+        StartCoroutine("RespawnCoroutine");
     }
 
     IEnumerator RespawnCoroutine()

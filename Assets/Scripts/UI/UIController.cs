@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class UIController : MonoBehaviour
 
     public Sprite heartFull, heartEmpty, heartHalf;
 
+    public TextMeshProUGUI gemText, fruitText;
+
     private void Awake()
     {
         instance = this;
@@ -19,7 +22,8 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdateGemCount();
+        UpdateFruitCount();
     }
 
     // Update is called once per frame
@@ -94,5 +98,15 @@ public class UIController : MonoBehaviour
                 break;
 
         }
+    }
+
+    public void UpdateGemCount()
+    {
+        gemText.text = LevelManager.instance.CountGems.ToString();
+    }
+
+    public void UpdateFruitCount()
+    {
+        fruitText.text = LevelManager.instance.CountFruits.ToString();
     }
 }
