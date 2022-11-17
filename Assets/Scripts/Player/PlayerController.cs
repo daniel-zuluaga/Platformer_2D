@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float forceJump;
     public bool canDoubleJump;
+    public float BounceForce; 
 
     [Header("Components")]
     public Rigidbody2D rb2D;
@@ -109,5 +110,10 @@ public class PlayerController : MonoBehaviour
     {
         KnockBackCounter = KnockBackLength;
         rb2D.velocity = new Vector2(0f, KnockBackForce);
+    }
+
+    public void Bounce()
+    {
+        rb2D.velocity = new Vector2(rb2D.velocity.x, BounceForce);
     }
 }

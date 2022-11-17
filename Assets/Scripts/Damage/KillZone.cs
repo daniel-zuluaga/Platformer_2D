@@ -10,5 +10,10 @@ public class KillZone : MonoBehaviour
         {
             LevelManager.instance.RespawnPlayer();
         }
+
+        if (other.CompareTag("Enemy"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
